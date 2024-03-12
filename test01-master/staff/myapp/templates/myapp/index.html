@@ -1,0 +1,36 @@
+{% extends 'myapp/base.html' %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'myapp/styles/style.css' %}">
+{% block title %}
+{{ title }}
+{% endblock %}
+
+{% block content %}
+             <table>
+                     <tr>
+                         <th>Название</th>
+                         <th>Цена</th>
+                         <th>Количество</th>
+                         <th>Адрес заказа</th>
+                         <th>Фотография</th>
+                         <th>Действие</th>
+                     </tr>
+        {% if tasks %}
+                 {% for el in tasks %}
+                     <tr>
+                        <td>{{ el.name }}</td>
+                        <td>{{ el.place }}</td>
+                        <td>{{ el.price }}</td>
+                        <td>{{ el.square }}</td>
+                        <td><img src="{[ elem.img_url }}" alt="Фотография" width = 200px; height = 200px></td>
+                         <td>
+                             <a href="{% url 'task-delete' el.id %}" class="btn btn-warning">Удалить</a>
+                             <a href="{% url 'task-update' el.id %}" class="btn btn-info">Peдактировать</a>
+                         </td>
+                     </tr>
+                 {% endfor %}
+                </table>
+        {% else %}
+            <p class="text">Записей не обнаружено</p>
+        {% endif %}
+{% endblock %}

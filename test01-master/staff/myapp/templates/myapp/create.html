@@ -1,0 +1,26 @@
+{% extends 'myapp/base.html' %}
+
+{% block title %}
+{{ title }}
+{% endblock %}
+
+{% block content %}
+
+ <form method="post">
+        <fieldset>
+            <h3>Новый товар</h3><br>
+            {% csrf_token %}
+            <label for="index"></label>
+            {{ form.name}}
+            <label for="email"></label>
+            {{ form.place }}
+            <label for="FIO"></label>
+            {{ form.price }}
+            <label for="phone_number"></label>
+            {{ form.square }}
+            <label for="img"></label>
+            {{ form.img }}
+            <button type="submit" class="save">Сохранить</button>
+        </fieldset>
+    </form>
+{% endblock %}
